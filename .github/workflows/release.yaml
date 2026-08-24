@@ -10,12 +10,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - shell: bash
+        env:
+          VERSION: ${{ github.event.release.tag_name }}
         run: |
-          version="${{ github.event.release.tag_name }}"
-          version="${version,,}"
-          yq e -P -o=json \
-            -i ".version = \"${version}\"" \
-            "${{ github.workspace }}/custom_components/homeconnect_ws/manifest.json"
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          path = Path(os.environ["GITHUB_WORKSPACE"]) / "custom_components/homeconnect_ws/manifest.json"
+          data = json.loads(path.read_text())
+          data["version"] = os.environ["VERSION"].lower()
+          path.write_text(json.dumps(data, indent=2) + "\n")
+          PY
       - run: |
           cd ${{ github.workspace }}/custom_components/homeconnect_ws
           zip homeconnect_ws.zip -r ./

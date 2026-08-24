@@ -7,7 +7,7 @@ The **Home Connect Local** allows users to integrate their home appliances suppo
 This is the `disruptivepatternmaterial` fork (Thermador US mappings + oven abort/pause gating). Install from this repo, not `chris-mc1/homeconnect_local_hass`.
 
 1. In HACS: Custom repositories → add `disruptivepatternmaterial/homeconnect_local_hass` as **Integration**. [HACS docs](https://hacs.xyz/docs/faq/custom_repositories/)
-2. Download **Home Connect Local** `1.0.6` (or later).
+2. Download **Home Connect Local** `1.0.7` (or later).
 
     [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=disruptivepatternmaterial&repository=homeconnect_local_hass&category=integration)
 
